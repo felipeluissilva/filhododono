@@ -1,6 +1,6 @@
 # Filho do Dono
 
-Site de conteúdo cultural e de entretenimento sobre sonhos, numerologia e tradição popular: interpretação de sonhos, curiosidades das loterias oficiais da Caixa, tabela dos bichos e palpite diário.
+Site de conteúdo cultural e de entretenimento sobre sonhos, numerologia e tradição popular: interpretação de sonhos, curiosidades das loterias oficiais da Caixa, tabela dos bichos (em medalhões ilustrados com efeito 3D), história do jogo do bicho e palpite diário.
 
 ## Sobre
 

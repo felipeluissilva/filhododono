@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Filho do Dono — Sonhos, Numerologia e Tradição Popular</title>
-<meta name="description" content="Interpretação de sonhos, curiosidades das loterias oficiais, tabela dos bichos e tradição popular do jogo do bicho. Conteúdo cultural e de entretenimento.">
+<meta name="description" content="Interpretação de sonhos, curiosidades das loterias oficiais, tabela dos bichos e história do jogo do bicho. Conteúdo cultural e de entretenimento.">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <style>
   :root {
@@ -18,6 +18,8 @@
     --texto: #241a3a;
     --serif: 'Georgia', 'Times New Roman', serif;
     --sans: -apple-system, 'Segoe UI', Arial, sans-serif;
+    --sombra-suave: 0 10px 24px rgba(23,11,46,0.10);
+    --sombra-forte: 0 22px 44px rgba(23,11,46,0.45);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -26,6 +28,7 @@
     background: var(--creme);
     color: var(--texto);
     line-height: 1.65;
+    overflow-x: hidden;
   }
   .sans { font-family: var(--sans); }
   a { color: inherit; }
@@ -39,9 +42,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    background: rgba(23, 11, 46, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(212, 175, 106, 0.25);
+    background: rgba(20, 10, 40, 0.78);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid rgba(212, 175, 106, 0.22);
+    box-shadow: 0 8px 30px rgba(10, 4, 20, 0.25);
   }
   .brand {
     display: flex;
@@ -54,15 +59,16 @@
     text-decoration: none;
   }
   .brand .mark {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     display: block;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.45));
   }
   .navlinks {
     display: flex;
-    gap: 1.8rem;
+    gap: 1.7rem;
     font-family: var(--sans);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
   .navlinks a {
     text-decoration: none;
@@ -72,7 +78,7 @@
   }
   .navlinks a:hover { opacity: 1; color: var(--dourado-claro); }
   .navlinks { display: none; }
-  @media (min-width: 760px) { .navlinks { display: flex; } }
+  @media (min-width: 860px) { .navlinks { display: flex; } }
 
   /* HERO */
   header.hero {
@@ -81,11 +87,31 @@
       radial-gradient(circle at 85% 90%, rgba(212,175,106,0.12), transparent 50%),
       linear-gradient(160deg, var(--roxo-escuro), var(--roxo) 60%, var(--roxo-claro));
     color: var(--dourado-claro);
-    padding: 6rem 1.5rem 7rem;
+    padding: 7rem 1.5rem 8rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
+  header.hero::before, header.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+  }
+  header.hero::before {
+    width: 320px; height: 320px;
+    background: var(--lilas);
+    opacity: 0.35;
+    top: -110px; left: -80px;
+  }
+  header.hero::after {
+    width: 360px; height: 360px;
+    background: var(--dourado);
+    opacity: 0.18;
+    bottom: -140px; right: -100px;
+  }
+  header.hero > * { position: relative; z-index: 1; }
   header.hero .tag {
     font-family: var(--sans);
     letter-spacing: 0.2em;
@@ -94,18 +120,30 @@
     color: var(--dourado);
     margin-bottom: 1.4rem;
   }
+  .orb-stage {
+    perspective: 700px;
+    margin: 0 auto 1.8rem;
+    width: 108px;
+    height: 108px;
+  }
   header.hero .logo-emblem {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 1.6rem;
+    width: 108px;
+    height: 108px;
     display: block;
-    filter: drop-shadow(0 0 30px rgba(183,157,255,0.4));
+    filter: drop-shadow(0 12px 28px rgba(10,4,20,0.55)) drop-shadow(0 0 34px rgba(183,157,255,0.45));
+    animation: float 5.5s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotateY(0deg); }
+    50% { transform: translateY(-10px) rotateY(6deg); }
   }
   header.hero h1 {
-    font-size: clamp(2.1rem, 5vw, 3.6rem);
-    max-width: 820px;
+    font-size: clamp(2.1rem, 5vw, 3.7rem);
+    max-width: 840px;
     margin: 0 auto 1.3rem;
     color: #fff;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.35);
   }
   header.hero p.sub {
     font-family: var(--sans);
@@ -116,30 +154,40 @@
   }
   .cta {
     display: inline-block;
-    background: linear-gradient(120deg, var(--dourado), var(--dourado-claro));
+    background: linear-gradient(160deg, #f6e6bd, var(--dourado) 55%, #b8863f);
     color: var(--roxo-escuro);
     font-family: var(--sans);
     font-weight: 700;
-    padding: 0.95rem 2.2rem;
+    padding: 1rem 2.3rem;
     border-radius: 999px;
     text-decoration: none;
     letter-spacing: 0.02em;
-    box-shadow: 0 8px 24px rgba(212,175,106,0.25);
-    transition: transform 0.2s;
+    box-shadow:
+      0 14px 30px rgba(10,4,20,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.6),
+      inset 0 -3px 6px rgba(120,80,20,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .cta:hover { transform: translateY(-2px); }
+  .cta:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 20px 38px rgba(10,4,20,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.7),
+      inset 0 -3px 6px rgba(120,80,20,0.35);
+  }
   .cta.ghost {
-    background: transparent;
+    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(212,175,106,0.6);
     color: var(--dourado-claro);
-    box-shadow: none;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
     margin-left: 0.8rem;
+    backdrop-filter: blur(6px);
   }
 
   section {
-    max-width: 1000px;
+    max-width: 1080px;
     margin: 0 auto;
-    padding: 5rem 1.5rem;
+    padding: 5.5rem 1.5rem;
   }
   .section-head {
     text-align: center;
@@ -156,7 +204,7 @@
   }
   h2 {
     color: var(--roxo-escuro);
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
   }
   .section-head p { font-family: var(--sans); color: #5a5270; margin-top: 0.8rem; }
 
@@ -164,16 +212,28 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.6rem;
+    perspective: 1400px;
   }
   .card {
-    background: #fff;
+    background: linear-gradient(160deg, #ffffff, #faf7ff);
     border: 1px solid #e6ddf5;
-    border-radius: 14px;
-    padding: 1.8rem;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 16px;
+    padding: 1.9rem;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transform-style: preserve-3d;
+    box-shadow: var(--sombra-suave);
+    position: relative;
   }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(42,19,85,0.08); }
-  .card .icon { font-size: 1.6rem; margin-bottom: 0.7rem; }
+  .card:hover {
+    transform: translateY(-6px) rotateX(4deg) rotateY(-3deg);
+    box-shadow: 0 26px 46px rgba(42,19,85,0.16);
+  }
+  .card .icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.7rem;
+    display: inline-block;
+    filter: drop-shadow(0 4px 6px rgba(42,19,85,0.25));
+  }
   .card h3 {
     color: var(--roxo);
     margin-bottom: 0.5rem;
@@ -187,13 +247,20 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
+    perspective: 1200px;
   }
   .sonho-item {
     background: linear-gradient(135deg, #ffffff, #f4effc);
     border: 1px solid #e6ddf5;
     border-radius: 12px;
-    padding: 1.2rem 1.4rem;
+    padding: 1.3rem 1.4rem;
     font-family: var(--sans);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--sombra-suave);
+  }
+  .sonho-item:hover {
+    transform: translateY(-4px) rotateX(3deg);
+    box-shadow: 0 18px 34px rgba(42,19,85,0.14);
   }
   .sonho-item .titulo {
     font-weight: 700;
@@ -203,69 +270,149 @@
   }
   .sonho-item .desc { font-size: 0.87rem; color: #5a5270; }
 
-  /* TABLE */
-  table.tabela {
-    width: 100%;
-    border-collapse: collapse;
+  /* BICHOS 3D MEDALLIONS */
+  .bichos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 1.5rem 1rem;
     margin-top: 1.5rem;
+    perspective: 1000px;
+  }
+  .medalha { text-align: center; }
+  .medalha .badge {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    margin: 0 auto 0.7rem;
+    background: radial-gradient(circle at 32% 26%, #d9c4ff, var(--roxo-claro) 48%, var(--roxo-escuro) 100%);
+    border: 1px solid rgba(212,175,106,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1rem;
+    box-shadow:
+      0 14px 22px rgba(10,4,20,0.4),
+      inset 0 3px 5px rgba(255,255,255,0.3),
+      inset 0 -8px 12px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+  }
+  .medalha:hover .badge {
+    transform: rotateX(12deg) rotateY(-12deg) translateY(-6px) scale(1.05);
+    box-shadow:
+      0 22px 34px rgba(10,4,20,0.5),
+      inset 0 3px 5px rgba(255,255,255,0.35),
+      inset 0 -8px 12px rgba(0,0,0,0.3);
+  }
+  .medalha .grupo {
     font-family: var(--sans);
-    font-size: 0.9rem;
-    border-radius: 12px;
-    overflow: hidden;
+    font-size: 0.7rem;
+    color: var(--dourado);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: block;
   }
-  table.tabela th, table.tabela td {
-    border: 1px solid #e6ddf5;
-    padding: 0.7rem 0.9rem;
-    text-align: left;
+  .medalha .nome {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--texto);
+    font-weight: 600;
+    display: block;
   }
-  table.tabela th {
-    background: var(--roxo-escuro);
+
+  /* HISTORIA */
+  .historia-wrap {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (max-width: 700px) { .historia-wrap { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
+  .selo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 26%, #6a3fc4, var(--roxo-escuro) 75%);
+    border: 3px double rgba(212,175,106,0.65);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: var(--dourado-claro);
+    font-family: var(--sans);
+    box-shadow: 0 24px 40px rgba(23,11,46,0.35), inset 0 4px 10px rgba(255,255,255,0.08), inset 0 -10px 18px rgba(0,0,0,0.35);
+    transition: transform 0.4s ease;
+    transform-style: preserve-3d;
   }
-  table.tabela tr:nth-child(even) { background: #f7f3fc; }
+  .selo:hover { transform: rotateY(10deg) rotateX(-6deg); }
+  .selo .desde { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
+  .selo .ano { font-family: var(--serif); font-size: 2.2rem; color: var(--dourado); margin: 0.3rem 0; }
+  .selo .rio { font-size: 0.72rem; opacity: 0.8; }
+  .historia-texto { font-family: var(--sans); color: #453f5c; }
+  .historia-texto p { margin-bottom: 1rem; font-size: 0.98rem; }
+  .historia-texto strong { color: var(--roxo); }
 
   /* LOTERIAS */
   .loteria-card {
-    background: var(--roxo-escuro);
+    background: linear-gradient(160deg, var(--roxo-escuro), #1e0f3c);
     color: var(--lilas);
-    border-radius: 14px;
-    padding: 1.8rem;
+    border-radius: 16px;
+    padding: 1.9rem;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transform-style: preserve-3d;
+  }
+  .loteria-card:hover {
+    transform: translateY(-6px) rotateX(4deg);
+    box-shadow: 0 26px 46px rgba(23,11,46,0.35);
   }
   .loteria-card h3 { color: var(--dourado-claro); margin-bottom: 0.5rem; font-size: 1.05rem; }
   .loteria-card p.sans { font-size: 0.9rem; }
   .loteria-card .nums {
     display: flex;
     gap: 0.4rem;
-    margin-top: 0.8rem;
+    margin-top: 0.9rem;
     flex-wrap: wrap;
   }
   .loteria-card .nums span {
-    background: rgba(212,175,106,0.15);
+    background: radial-gradient(circle at 32% 26%, rgba(212,175,106,0.28), rgba(212,175,106,0.08));
     border: 1px solid rgba(212,175,106,0.5);
     color: var(--dourado-claro);
     border-radius: 50%;
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--sans);
     font-size: 0.82rem;
+    box-shadow: inset 0 2px 3px rgba(255,255,255,0.15), inset 0 -3px 5px rgba(0,0,0,0.3);
   }
 
   .palpite-dia {
-    background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
+    background: linear-gradient(150deg, var(--roxo-escuro), var(--roxo));
     color: var(--dourado-claro);
-    border-radius: 18px;
-    padding: 3rem;
+    border-radius: 22px;
+    padding: 3.2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+    box-shadow: var(--sombra-forte);
+  }
+  .palpite-dia::before {
+    content: "";
+    position: absolute;
+    width: 260px; height: 260px;
+    background: var(--lilas);
+    opacity: 0.2;
+    filter: blur(70px);
+    top: -100px; right: -60px;
   }
   .palpite-dia .numero {
-    font-size: 2.6rem;
+    font-size: 2.7rem;
     color: var(--dourado);
     margin: 0.6rem 0;
+    position: relative;
   }
 
   /* TESTIMONIALS */
@@ -273,9 +420,12 @@
     background: #fff;
     border: 1px solid #e6ddf5;
     border-radius: 14px;
-    padding: 1.6rem;
+    padding: 1.7rem;
     font-family: var(--sans);
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+  .depo:hover { transform: translateY(-4px); box-shadow: 0 20px 36px rgba(42,19,85,0.14); }
   .depo p.texto { font-size: 0.94rem; color: #453f5c; margin-bottom: 0.8rem; }
   .depo .autor { font-size: 0.85rem; color: var(--roxo-claro); font-weight: 700; }
 
@@ -304,14 +454,17 @@
     border: 1px solid #d8cdee;
   }
   form.newsletter button {
-    background: var(--roxo-escuro);
+    background: linear-gradient(160deg, #2f1763, var(--roxo-escuro));
     color: #fff;
     border: none;
     padding: 0.9rem 1.8rem;
     border-radius: 8px;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: 0 10px 20px rgba(23,11,46,0.3);
+    transition: transform 0.2s ease;
   }
+  form.newsletter button:hover { transform: translateY(-2px); }
 
   footer {
     background: var(--roxo-escuro);
@@ -320,7 +473,7 @@
     font-family: var(--sans);
   }
   .footer-inner {
-    max-width: 1000px;
+    max-width: 1080px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -352,13 +505,16 @@
     <a href="#sonhos">Sonhos</a>
     <a href="#loterias">Loterias</a>
     <a href="#bichos">Tabela dos Bichos</a>
+    <a href="#historia">História</a>
     <a href="#palpite">Palpite do dia</a>
     <a href="#newsletter">Newsletter</a>
   </div>
 </nav>
 
 <header class="hero" id="topo">
-  <img class="logo-emblem" src="logo.svg" alt="Filho do Dono">
+  <div class="orb-stage">
+    <img class="logo-emblem" src="logo.svg" alt="Filho do Dono">
+  </div>
   <div class="tag">Filho do Dono</div>
   <h1>Os palpites que atravessam gerações.</h1>
   <p class="sub">Sonhos, numerologia e tradições populares — do jogo do bicho às loterias oficiais — contados como sempre foram: de boca em boca, de pai pra filho.</p>
@@ -379,9 +535,9 @@
       <p class="sans">A tradição popular sempre associou sonhos a números e bichos. Reunimos essas leituras de forma acessível e divertida.</p>
     </div>
     <div class="card">
-      <div class="icon">🎲</div>
+      <div class="icon">🎴</div>
       <h3>Tabela do jogo do bicho</h3>
-      <p class="sans">A clássica tabela com os 25 animais, de referência histórica e cultural, para quem quer entender a origem da tradição.</p>
+      <p class="sans">Os 25 animais clássicos, em medalhões ilustrados, como referência histórica e cultural.</p>
     </div>
     <div class="card">
       <div class="icon">🍀</div>
@@ -389,9 +545,9 @@
       <p class="sans">Números e estatísticas históricas das loterias oficiais da Caixa, como conteúdo de curiosidade — sem promessa de resultado.</p>
     </div>
     <div class="card">
-      <div class="icon">📖</div>
-      <h3>Histórias e tradição</h3>
-      <p class="sans">Ditados populares e curiosidades sobre mais de um século de cultura popular ligada aos números.</p>
+      <div class="icon">📜</div>
+      <h3>História e tradição</h3>
+      <p class="sans">A origem do jogo do bicho, seus mais de 130 anos de cultura popular no Brasil.</p>
     </div>
   </div>
 </section>
@@ -404,10 +560,10 @@
   </div>
   <div class="sonhos-grid">
     <div class="sonho-item"><div class="titulo">🐍 Sonhar com cobra</div><div class="desc">Associado, na tradição, a transformação e alerta — ligado ao bicho Cobra (grupo 09).</div></div>
-    <div class="sonho-item"><div class="titulo">💧 Sonhar com água</div><div class="desc">Simboliza renovação e emoções na cultura popular — costuma remeter ao Peixe (grupo 24).</div></div>
+    <div class="sonho-item"><div class="titulo">💧 Sonhar com água</div><div class="desc">Simboliza renovação e emoções na cultura popular — costuma remeter ao Jacaré (grupo 15).</div></div>
     <div class="sonho-item"><div class="titulo">🐦 Sonhar com pássaro</div><div class="desc">Ligado a liberdade e boas notícias — associado à Águia (grupo 02) na tradição.</div></div>
-    <div class="sonho-item"><div class="titulo">💰 Sonhar com dinheiro</div><div class="desc">Na crença popular, remete a mudanças materiais — associado ao Elefante (grupo 20).</div></div>
-    <div class="sonho-item"><div class="titulo">🐘 Sonhar com casamento</div><div class="desc">Simboliza união e novos ciclos — tradicionalmente ligado ao Camelo (grupo 08).</div></div>
+    <div class="sonho-item"><div class="titulo">💰 Sonhar com dinheiro</div><div class="desc">Na crença popular, remete a mudanças materiais — associado ao Elefante (grupo 12).</div></div>
+    <div class="sonho-item"><div class="titulo">💍 Sonhar com casamento</div><div class="desc">Simboliza união e novos ciclos — tradicionalmente ligado ao Camelo (grupo 08).</div></div>
     <div class="sonho-item"><div class="titulo">🦋 Sonhar com voo</div><div class="desc">Representa leveza e liberdade — associado à Borboleta (grupo 04).</div></div>
   </div>
 </section>
@@ -440,19 +596,56 @@
 <section class="tabela-bichos" id="bichos">
   <div class="section-head">
     <div class="eyebrow">Tradição popular</div>
-    <h2>Tabela dos Bichos (referência cultural)</h2>
-    <p>A tabela clássica dos 25 animais, apresentada aqui como registro histórico e cultural.</p>
+    <h2>Tabela dos Bichos</h2>
+    <p>Os 25 animais clássicos, apresentados aqui como registro histórico e cultural.</p>
   </div>
-  <table class="tabela">
-    <tr><th>Grupo</th><th>Bicho</th><th>Grupo</th><th>Bicho</th></tr>
-    <tr><td>01</td><td>Avestruz</td><td>02</td><td>Águia</td></tr>
-    <tr><td>03</td><td>Burro</td><td>04</td><td>Borboleta</td></tr>
-    <tr><td>05</td><td>Cachorro</td><td>06</td><td>Cabra</td></tr>
-    <tr><td>07</td><td>Carneiro</td><td>08</td><td>Camelo</td></tr>
-    <tr><td>09</td><td>Cobra</td><td>10</td><td>Coelho</td></tr>
-    <tr><td>11</td><td>Cavalo</td><td>12</td><td>Elefante</td></tr>
-    <tr><td>13</td><td>Galo</td><td>14</td><td>Gato</td></tr>
-  </table>
+  <div class="bichos-grid">
+    <div class="medalha"><div class="badge">🐦</div><span class="grupo">01</span><span class="nome">Avestruz</span></div>
+    <div class="medalha"><div class="badge">🦅</div><span class="grupo">02</span><span class="nome">Águia</span></div>
+    <div class="medalha"><div class="badge">🐴</div><span class="grupo">03</span><span class="nome">Burro</span></div>
+    <div class="medalha"><div class="badge">🦋</div><span class="grupo">04</span><span class="nome">Borboleta</span></div>
+    <div class="medalha"><div class="badge">🐕</div><span class="grupo">05</span><span class="nome">Cachorro</span></div>
+    <div class="medalha"><div class="badge">🐐</div><span class="grupo">06</span><span class="nome">Cabra</span></div>
+    <div class="medalha"><div class="badge">🐏</div><span class="grupo">07</span><span class="nome">Carneiro</span></div>
+    <div class="medalha"><div class="badge">🐫</div><span class="grupo">08</span><span class="nome">Camelo</span></div>
+    <div class="medalha"><div class="badge">🐍</div><span class="grupo">09</span><span class="nome">Cobra</span></div>
+    <div class="medalha"><div class="badge">🐇</div><span class="grupo">10</span><span class="nome">Coelho</span></div>
+    <div class="medalha"><div class="badge">🐎</div><span class="grupo">11</span><span class="nome">Cavalo</span></div>
+    <div class="medalha"><div class="badge">🐘</div><span class="grupo">12</span><span class="nome">Elefante</span></div>
+    <div class="medalha"><div class="badge">🐓</div><span class="grupo">13</span><span class="nome">Galo</span></div>
+    <div class="medalha"><div class="badge">🐈</div><span class="grupo">14</span><span class="nome">Gato</span></div>
+    <div class="medalha"><div class="badge">🐊</div><span class="grupo">15</span><span class="nome">Jacaré</span></div>
+    <div class="medalha"><div class="badge">🦁</div><span class="grupo">16</span><span class="nome">Leão</span></div>
+    <div class="medalha"><div class="badge">🐒</div><span class="grupo">17</span><span class="nome">Macaco</span></div>
+    <div class="medalha"><div class="badge">🐖</div><span class="grupo">18</span><span class="nome">Porco</span></div>
+    <div class="medalha"><div class="badge">🦚</div><span class="grupo">19</span><span class="nome">Pavão</span></div>
+    <div class="medalha"><div class="badge">🦃</div><span class="grupo">20</span><span class="nome">Peru</span></div>
+    <div class="medalha"><div class="badge">🐂</div><span class="grupo">21</span><span class="nome">Touro</span></div>
+    <div class="medalha"><div class="badge">🐅</div><span class="grupo">22</span><span class="nome">Tigre</span></div>
+    <div class="medalha"><div class="badge">🐻</div><span class="grupo">23</span><span class="nome">Urso</span></div>
+    <div class="medalha"><div class="badge">🦌</div><span class="grupo">24</span><span class="nome">Veado</span></div>
+    <div class="medalha"><div class="badge">🐄</div><span class="grupo">25</span><span class="nome">Vaca</span></div>
+  </div>
+</section>
+
+<section class="historia" id="historia">
+  <div class="section-head">
+    <div class="eyebrow">Origem</div>
+    <h2>A história por trás da tradição</h2>
+    <p>Mais de um século de cultura popular brasileira, contada em poucas linhas.</p>
+  </div>
+  <div class="historia-wrap">
+    <div class="selo">
+      <span class="desde">Desde</span>
+      <span class="ano">1892</span>
+      <span class="rio">Rio de Janeiro</span>
+    </div>
+    <div class="historia-texto">
+      <p><strong>1892 — a origem.</strong> A tradição nasceu no Rio de Janeiro, criada pelo Barão de Drummond como forma de atrair visitantes ao seu zoológico: cada bilhete trazia um dos 25 animais, dando origem ao nome popular "jogo do bicho".</p>
+      <p><strong>Um século de folclore.</strong> Ao longo de mais de 130 anos, o jogo do bicho se espalhou pelo país e virou parte do imaginário popular — presente em ditados, expressões do dia a dia e na cultura de bairro.</p>
+      <p><strong>Hoje.</strong> Aqui, guardamos essa tradição como patrimônio cultural e afetivo — contando sua história, seus símbolos e curiosidades, sem operar ou incentivar qualquer prática de aposta.</p>
+    </div>
+  </div>
 </section>
 
 <section class="palpite" id="palpite">
@@ -520,6 +713,7 @@
         <li><a href="#sonhos">Sonhos</a></li>
         <li><a href="#loterias">Loterias</a></li>
         <li><a href="#bichos">Tabela dos Bichos</a></li>
+        <li><a href="#historia">História</a></li>
       </ul>
     </div>
     <div>

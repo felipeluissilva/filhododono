@@ -1,34 +1,77 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Filho do Dono">
   <defs>
-    <radialGradient id="bg" cx="35%" cy="28%" r="80%">
-      <stop offset="0%" stop-color="#b79dff"/>
-      <stop offset="55%" stop-color="#4b2a8f"/>
-      <stop offset="100%" stop-color="#170b2e"/>
+    <radialGradient id="bg" cx="34%" cy="26%" r="85%">
+      <stop offset="0%" stop-color="#cdb6ff"/>
+      <stop offset="45%" stop-color="#5a33a8"/>
+      <stop offset="100%" stop-color="#130824"/>
     </radialGradient>
     <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f0ddb0"/>
-      <stop offset="100%" stop-color="#d4af6a"/>
+      <stop offset="0%" stop-color="#f6e6bd"/>
+      <stop offset="50%" stop-color="#d4af6a"/>
+      <stop offset="100%" stop-color="#a97f36"/>
+    </linearGradient>
+    <linearGradient id="goldSoft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f0ddb0" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#f6e6bd" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f0ddb0" stop-opacity="0"/>
     </linearGradient>
     <mask id="moon-mask">
       <rect x="0" y="0" width="100" height="100" fill="#fff"/>
-      <circle cx="25" cy="21" r="6.4" fill="#000"/>
+      <circle cx="25.5" cy="21" r="6.1" fill="#000"/>
     </mask>
+    <filter id="emboss" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="1.1" stdDeviation="0.9" flood-color="#0a0414" flood-opacity="0.55"/>
+    </filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
-  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
-  <circle cx="50" cy="50" r="47" fill="none" stroke="url(#gold)" stroke-width="1.4"/>
-  <circle cx="50" cy="50" r="42" fill="none" stroke="url(#gold)" stroke-width="0.5" opacity="0.5"/>
+  <!-- outer glow -->
+  <circle cx="50" cy="50" r="49" fill="none" stroke="url(#gold)" stroke-width="0.6" opacity="0.55" filter="url(#glow)"/>
 
-  <circle cx="21" cy="20" r="7.4" fill="url(#gold)" mask="url(#moon-mask)" opacity="0.92"/>
+  <!-- sphere body -->
+  <circle cx="50" cy="50" r="47" fill="url(#bg)"/>
 
-  <g fill="url(#gold)">
-    <circle cx="76" cy="24" r="1.3"/>
-    <circle cx="82" cy="34" r="0.9"/>
-    <circle cx="18" cy="76" r="1"/>
-    <circle cx="78" cy="72" r="1.1"/>
+  <!-- coin-edge ring pattern -->
+  <g opacity="0.55">
+    <circle cx="50" cy="50" r="44.5" fill="none" stroke="url(#gold)" stroke-width="0.6" stroke-dasharray="1.6 2.4"/>
   </g>
 
-  <text x="50" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" fill="url(#gold)" text-anchor="middle">FD</text>
-  <line x1="34" y1="70" x2="66" y2="70" stroke="url(#gold)" stroke-width="1" opacity="0.85"/>
-  <circle cx="50" cy="70" r="1.6" fill="url(#gold)"/>
+  <!-- outer bevel ring -->
+  <circle cx="50" cy="50" r="47" fill="none" stroke="url(#gold)" stroke-width="1.6" filter="url(#emboss)"/>
+  <circle cx="50" cy="50" r="40.5" fill="none" stroke="url(#gold)" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- glossy highlight arc (glass sphere feel) -->
+  <path d="M 14 32 A 40 40 0 0 1 70 10" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.14"/>
+
+  <!-- crescent moon -->
+  <circle cx="22" cy="19" r="6.8" fill="url(#gold)" mask="url(#moon-mask)" opacity="0.95" filter="url(#emboss)"/>
+
+  <!-- stars -->
+  <g fill="url(#gold)">
+    <circle cx="77" cy="23" r="1.3"/>
+    <circle cx="83" cy="35" r="0.85"/>
+    <circle cx="17" cy="75" r="0.95"/>
+    <circle cx="80" cy="70" r="1.15"/>
+    <circle cx="73" cy="82" r="0.7"/>
+  </g>
+
+  <!-- monogram -->
+  <text x="50" y="61" font-family="Georgia, 'Times New Roman', serif" font-size="31" font-weight="700"
+        fill="url(#gold)" text-anchor="middle" filter="url(#emboss)">FD</text>
+
+  <!-- ornamental flourish -->
+  <g stroke="url(#gold)" stroke-width="1" fill="none" opacity="0.9">
+    <path d="M 28 69 Q 50 76 72 69" />
+    <path d="M 32 72.5 Q 50 78.5 68 72.5" opacity="0.6"/>
+  </g>
+  <circle cx="50" cy="69.2" r="1.5" fill="url(#gold)"/>
+
+  <!-- shine sweep -->
+  <rect x="0" y="0" width="100" height="100" fill="url(#goldSoft)" opacity="0.06"/>
 </svg>
