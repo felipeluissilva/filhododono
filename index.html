@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Filho do Dono — Sonhos, Numerologia e Tradição Popular</title>
 <meta name="description" content="Interpretação de sonhos, curiosidades das loterias oficiais, tabela dos bichos e tradição popular do jogo do bicho. Conteúdo cultural e de entretenimento.">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <style>
   :root {
     --roxo-escuro: #170b2e;
@@ -55,15 +56,7 @@
   .brand .mark {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, var(--lilas), var(--roxo-claro) 60%, var(--roxo-escuro));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    color: var(--dourado-claro);
-    border: 1px solid rgba(212, 175, 106, 0.6);
+    display: block;
   }
   .navlinks {
     display: flex;
@@ -102,19 +95,11 @@
     margin-bottom: 1.4rem;
   }
   header.hero .logo-emblem {
-    width: 84px;
-    height: 84px;
+    width: 96px;
+    height: 96px;
     margin: 0 auto 1.6rem;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, var(--lilas), var(--roxo-claro) 55%, var(--roxo-escuro));
-    border: 1px solid rgba(212,175,106,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-size: 2rem;
-    color: var(--dourado-claro);
-    box-shadow: 0 0 40px rgba(183,157,255,0.35);
+    display: block;
+    filter: drop-shadow(0 0 30px rgba(183,157,255,0.4));
   }
   header.hero h1 {
     font-size: clamp(2.1rem, 5vw, 3.6rem);
@@ -359,7 +344,7 @@
 
 <nav>
   <a class="brand" href="#topo">
-    <span class="mark">FD</span>
+    <img class="mark" src="logo.svg" alt="">
     Filho do Dono
   </a>
   <div class="navlinks">
@@ -373,7 +358,7 @@
 </nav>
 
 <header class="hero" id="topo">
-  <div class="logo-emblem">FD</div>
+  <img class="logo-emblem" src="logo.svg" alt="Filho do Dono">
   <div class="tag">Filho do Dono</div>
   <h1>Os palpites que atravessam gerações.</h1>
   <p class="sub">Sonhos, numerologia e tradições populares — do jogo do bicho às loterias oficiais — contados como sempre foram: de boca em boca, de pai pra filho.</p>
@@ -525,7 +510,7 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <a class="brand" href="#topo"><span class="mark">FD</span>Filho do Dono</a>
+      <a class="brand" href="#topo"><img class="mark" src="logo.svg" alt="">Filho do Dono</a>
       <p class="sans" style="margin-top:0.8rem; font-size:0.85rem; opacity:0.8; max-width:280px;">Conteúdo cultural sobre sonhos, numerologia e tradição popular brasileira.</p>
     </div>
     <div>

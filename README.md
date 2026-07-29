@@ -9,6 +9,7 @@ Este projeto reúne, de forma editorial, a herança cultural e o folclore em tor
 ## Estrutura
 
 - `index.html` — página única do site (HTML + CSS inline, sem dependências externas).
+- `logo.svg` — marca/emblema do site (também usado como favicon).
 
 ## Executar localmente
 
