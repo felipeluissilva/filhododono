@@ -1,14 +1,15 @@
 # Filho do Dono
 
-Site de conteúdo cultural e de entretenimento sobre a tradição popular do jogo do bicho: palpites diários, interpretação de sonhos, tabela dos bichos e curiosidades.
+Site de conteúdo cultural e de entretenimento sobre sonhos, numerologia e tradição popular: interpretação de sonhos, curiosidades das loterias oficiais da Caixa, tabela dos bichos e palpite diário.
 
 ## Sobre
 
-Este projeto reúne, de forma editorial, a herança cultural e o folclore em torno do jogo do bicho no Brasil — sem operar, intermediar ou incentivar apostas.
+Este projeto reúne, de forma editorial, a herança cultural e o folclore em torno do jogo do bicho e das loterias populares no Brasil — sem operar, intermediar ou incentivar apostas.
 
 ## Estrutura
 
 - `index.html` — página única do site (HTML + CSS inline, sem dependências externas).
+- `logo.svg` — marca/emblema do site (também usado como favicon).
 
 ## Executar localmente
 
