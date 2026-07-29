@@ -1,29 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Filho do Dono">
   <defs>
     <radialGradient id="bg" cx="34%" cy="26%" r="85%">
-      <stop offset="0%" stop-color="#cdb6ff"/>
+      <stop offset="0%" stop-color="#d9c4ff"/>
       <stop offset="45%" stop-color="#5a33a8"/>
-      <stop offset="100%" stop-color="#130824"/>
+      <stop offset="100%" stop-color="#100720"/>
     </radialGradient>
     <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f6e6bd"/>
+      <stop offset="0%" stop-color="#f9edc9"/>
       <stop offset="50%" stop-color="#d4af6a"/>
-      <stop offset="100%" stop-color="#a97f36"/>
+      <stop offset="100%" stop-color="#9c7128"/>
     </linearGradient>
     <linearGradient id="goldSoft" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#f0ddb0" stop-opacity="0"/>
       <stop offset="50%" stop-color="#f6e6bd" stop-opacity="0.9"/>
       <stop offset="100%" stop-color="#f0ddb0" stop-opacity="0"/>
     </linearGradient>
-    <mask id="moon-mask">
-      <rect x="0" y="0" width="100" height="100" fill="#fff"/>
-      <circle cx="25.5" cy="21" r="6.1" fill="#000"/>
-    </mask>
+    <radialGradient id="eye" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fdf3da"/>
+      <stop offset="100%" stop-color="#d4af6a"/>
+    </radialGradient>
     <filter id="emboss" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="1.1" stdDeviation="0.9" flood-color="#0a0414" flood-opacity="0.55"/>
+      <feDropShadow dx="0" dy="1.1" stdDeviation="0.9" flood-color="#080312" flood-opacity="0.6"/>
     </filter>
     <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feGaussianBlur stdDeviation="2.4" result="b"/>
       <feMerge>
         <feMergeNode in="b"/>
         <feMergeNode in="SourceGraphic"/>
@@ -37,41 +37,76 @@
   <!-- sphere body -->
   <circle cx="50" cy="50" r="47" fill="url(#bg)"/>
 
-  <!-- coin-edge ring pattern -->
-  <g opacity="0.55">
-    <circle cx="50" cy="50" r="44.5" fill="none" stroke="url(#gold)" stroke-width="0.6" stroke-dasharray="1.6 2.4"/>
+  <!-- coin-edge ring -->
+  <circle cx="50" cy="50" r="44.3" fill="none" stroke="url(#gold)" stroke-width="0.6" stroke-dasharray="1.6 2.4" opacity="0.55"/>
+
+  <!-- bevel rings -->
+  <circle cx="50" cy="50" r="47" fill="none" stroke="url(#gold)" stroke-width="1.7" filter="url(#emboss)"/>
+  <circle cx="50" cy="50" r="39.5" fill="none" stroke="url(#gold)" stroke-width="0.5" opacity="0.55"/>
+
+  <!-- glossy highlight -->
+  <path d="M 13 30 A 41 41 0 0 1 71 9" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.13"/>
+
+  <!-- crescent moon backdrop, upper right -->
+  <g opacity="0.5">
+    <mask id="moon2">
+      <rect x="0" y="0" width="100" height="100" fill="#fff"/>
+      <circle cx="80" cy="21" r="5.6" fill="#000"/>
+    </mask>
+    <circle cx="77.5" cy="19.5" r="6.2" fill="url(#gold)" mask="url(#moon2)"/>
+  </g>
+  <g fill="url(#gold)" opacity="0.85">
+    <circle cx="18" cy="24" r="1"/>
+    <circle cx="14" cy="34" r="0.7"/>
+    <circle cx="86" cy="60" r="0.9"/>
   </g>
 
-  <!-- outer bevel ring -->
-  <circle cx="50" cy="50" r="47" fill="none" stroke="url(#gold)" stroke-width="1.6" filter="url(#emboss)"/>
-  <circle cx="50" cy="50" r="40.5" fill="none" stroke="url(#gold)" stroke-width="0.5" opacity="0.6"/>
+  <!-- perch branch -->
+  <line x1="27" y1="83.5" x2="73" y2="83.5" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round" opacity="0.9" filter="url(#emboss)"/>
 
-  <!-- glossy highlight arc (glass sphere feel) -->
-  <path d="M 14 32 A 40 40 0 0 1 70 10" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.14"/>
-
-  <!-- crescent moon -->
-  <circle cx="22" cy="19" r="6.8" fill="url(#gold)" mask="url(#moon-mask)" opacity="0.95" filter="url(#emboss)"/>
-
-  <!-- stars -->
-  <g fill="url(#gold)">
-    <circle cx="77" cy="23" r="1.3"/>
-    <circle cx="83" cy="35" r="0.85"/>
-    <circle cx="17" cy="75" r="0.95"/>
-    <circle cx="80" cy="70" r="1.15"/>
-    <circle cx="73" cy="82" r="0.7"/>
+  <!-- owl feet -->
+  <g stroke="url(#gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9">
+    <path d="M 44 79 L 44 83.5"/>
+    <path d="M 56 79 L 56 83.5"/>
   </g>
 
-  <!-- monogram -->
-  <text x="50" y="61" font-family="Georgia, 'Times New Roman', serif" font-size="31" font-weight="700"
-        fill="url(#gold)" text-anchor="middle" filter="url(#emboss)">FD</text>
+  <!-- owl body -->
+  <ellipse cx="50" cy="64" rx="15.5" ry="18" fill="url(#gold)" filter="url(#emboss)"/>
 
-  <!-- ornamental flourish -->
-  <g stroke="url(#gold)" stroke-width="1" fill="none" opacity="0.9">
-    <path d="M 28 69 Q 50 76 72 69" />
-    <path d="M 32 72.5 Q 50 78.5 68 72.5" opacity="0.6"/>
+  <!-- wing accents -->
+  <g fill="none" stroke="#7a4fc9" stroke-width="1" opacity="0.35">
+    <path d="M 37 54 Q 29 65 35 79"/>
+    <path d="M 63 54 Q 71 65 65 79"/>
   </g>
-  <circle cx="50" cy="69.2" r="1.5" fill="url(#gold)"/>
+  <g fill="none" stroke="#9c7128" stroke-width="0.8" opacity="0.5">
+    <path d="M 41 58 Q 50 61 59 58"/>
+    <path d="M 40 65 Q 50 68.5 60 65"/>
+    <path d="M 41 72 Q 50 75.5 59 72"/>
+  </g>
+
+  <!-- head -->
+  <circle cx="50" cy="38" r="14.5" fill="url(#gold)" filter="url(#emboss)"/>
+
+  <!-- ear tufts -->
+  <path d="M 39 26 L 34.5 12.5 L 45 22.5 Z" fill="url(#gold)"/>
+  <path d="M 61 26 L 65.5 12.5 L 55 22.5 Z" fill="url(#gold)"/>
+
+  <!-- facial disc shading -->
+  <circle cx="50" cy="39" r="13" fill="#100720" opacity="0.12"/>
+
+  <!-- eyes -->
+  <circle cx="43.3" cy="37.5" r="6.4" fill="#100720"/>
+  <circle cx="56.7" cy="37.5" r="6.4" fill="#100720"/>
+  <circle cx="43.3" cy="37.5" r="4.4" fill="url(#eye)"/>
+  <circle cx="56.7" cy="37.5" r="4.4" fill="url(#eye)"/>
+  <circle cx="43.3" cy="37.5" r="1.9" fill="#100720"/>
+  <circle cx="56.7" cy="37.5" r="1.9" fill="#100720"/>
+  <circle cx="42.3" cy="36.3" r="0.7" fill="#fff" opacity="0.9"/>
+  <circle cx="55.7" cy="36.3" r="0.7" fill="#fff" opacity="0.9"/>
+
+  <!-- beak -->
+  <path d="M 48.3 43.5 L 51.7 43.5 L 50 48.5 Z" fill="#100720"/>
 
   <!-- shine sweep -->
-  <rect x="0" y="0" width="100" height="100" fill="url(#goldSoft)" opacity="0.06"/>
+  <rect x="0" y="0" width="100" height="100" fill="url(#goldSoft)" opacity="0.05"/>
 </svg>

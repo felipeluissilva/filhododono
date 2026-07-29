@@ -389,30 +389,77 @@
     box-shadow: inset 0 2px 3px rgba(255,255,255,0.15), inset 0 -3px 5px rgba(0,0,0,0.3);
   }
 
-  .palpite-dia {
+  .palpite-opcoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.6rem;
+    perspective: 1400px;
+  }
+  .palpite-card {
     background: linear-gradient(150deg, var(--roxo-escuro), var(--roxo));
     color: var(--dourado-claro);
-    border-radius: 22px;
-    padding: 3.2rem;
+    border-radius: 20px;
+    padding: 2.2rem 1.8rem;
     text-align: center;
     position: relative;
     overflow: hidden;
     box-shadow: var(--sombra-forte);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transform-style: preserve-3d;
   }
-  .palpite-dia::before {
+  .palpite-card:hover {
+    transform: translateY(-6px) rotateX(4deg);
+    box-shadow: 0 30px 54px rgba(10,4,20,0.5);
+  }
+  .palpite-card::before {
     content: "";
     position: absolute;
-    width: 260px; height: 260px;
+    width: 200px; height: 200px;
     background: var(--lilas);
-    opacity: 0.2;
-    filter: blur(70px);
-    top: -100px; right: -60px;
+    opacity: 0.18;
+    filter: blur(60px);
+    top: -80px; right: -60px;
   }
-  .palpite-dia .numero {
-    font-size: 2.7rem;
+  .palpite-card > * { position: relative; }
+  .palpite-card .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .palpite-card h3 { color: #fff; font-size: 1.15rem; margin-bottom: 0.3rem; }
+  .palpite-card p.sans { font-size: 0.88rem; color: var(--lilas); margin-bottom: 1rem; }
+  .palpite-card select {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(212,175,106,0.5);
+    background: rgba(255,255,255,0.06);
+    color: var(--dourado-claro);
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .palpite-card select option { color: #241a3a; }
+  .btn-palpite {
+    background: linear-gradient(160deg, #f6e6bd, var(--dourado) 55%, #b8863f);
+    color: var(--roxo-escuro);
+    border: none;
+    font-weight: 700;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    box-shadow: 0 8px 18px rgba(10,4,20,0.4), inset 0 1px 0 rgba(255,255,255,0.6);
+    transition: transform 0.2s ease;
+    margin-bottom: 1.1rem;
+  }
+  .btn-palpite:hover { transform: translateY(-2px); }
+  .resultado-palpite {
+    font-family: var(--serif);
+    font-size: 1.3rem;
     color: var(--dourado);
-    margin: 0.6rem 0;
-    position: relative;
+    min-height: 1.6em;
+  }
+  .disclaimer-palpite {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #7a7290;
+    margin-top: 2rem;
   }
 
   /* TESTIMONIALS */
@@ -650,16 +697,91 @@
 
 <section class="palpite" id="palpite">
   <div class="section-head">
-    <div class="eyebrow">Conteúdo do dia</div>
-    <h2>Palpite do dia</h2>
-    <p>Renovado diariamente, com base na tradição popular. Conteúdo de entretenimento e curiosidade cultural.</p>
+    <div class="eyebrow">Escolha o seu jeito</div>
+    <h2>Palpites da tradição popular</h2>
+    <p>Três formas diferentes de gerar seu palpite do dia — todas baseadas em folclore e numerologia popular, renovadas na hora.</p>
   </div>
-  <div class="palpite-dia">
-    <p class="sans">Hoje a tradição popular aponta para o bicho:</p>
-    <div class="numero">🐐 Cabra — Grupo 06</div>
-    <p class="sans">Sem qualquer garantia de resultado — apenas folclore e tradição.</p>
+
+  <div class="palpite-opcoes">
+    <div class="palpite-card">
+      <div class="icon">🗓️</div>
+      <h3>Palpite do dia</h3>
+      <p class="sans">Baseado na data de hoje.</p>
+      <div class="resultado-palpite" id="palpiteDia">—</div>
+    </div>
+
+    <div class="palpite-card">
+      <div class="icon">🌙</div>
+      <h3>Palpite pelo sonho</h3>
+      <p class="sans">Escolha o que você sonhou.</p>
+      <select class="sans" id="selectSonho">
+        <option value="9">Cobra</option>
+        <option value="15">Água / Jacaré</option>
+        <option value="2">Pássaro</option>
+        <option value="12">Dinheiro</option>
+        <option value="8">Casamento</option>
+        <option value="4">Voar</option>
+        <option value="16">Fogo</option>
+        <option value="11">Viagem</option>
+      </select>
+      <button class="btn-palpite sans" onclick="mostrarPalpite('selectSonho','resultadoSonho')">Ver meu palpite</button>
+      <div class="resultado-palpite" id="resultadoSonho">—</div>
+    </div>
+
+    <div class="palpite-card">
+      <div class="icon">🎂</div>
+      <h3>Palpite pelo mês</h3>
+      <p class="sans">Pelo seu mês de nascimento.</p>
+      <select class="sans" id="selectMes">
+        <option value="1">Janeiro</option>
+        <option value="2">Fevereiro</option>
+        <option value="3">Março</option>
+        <option value="4">Abril</option>
+        <option value="5">Maio</option>
+        <option value="6">Junho</option>
+        <option value="7">Julho</option>
+        <option value="8">Agosto</option>
+        <option value="9">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+      </select>
+      <button class="btn-palpite sans" onclick="mostrarPalpite('selectMes','resultadoMes')">Ver meu palpite</button>
+      <div class="resultado-palpite" id="resultadoMes">—</div>
+    </div>
   </div>
+
+  <p class="disclaimer-palpite sans">Conteúdo de entretenimento, folclore e numerologia popular — sem qualquer garantia de resultado e sem vínculo com sorteios reais.</p>
 </section>
+
+<script>
+  var bichos = [
+    {g:'01',n:'Avestruz',e:'🐦'}, {g:'02',n:'Águia',e:'🦅'}, {g:'03',n:'Burro',e:'🐴'},
+    {g:'04',n:'Borboleta',e:'🦋'}, {g:'05',n:'Cachorro',e:'🐕'}, {g:'06',n:'Cabra',e:'🐐'},
+    {g:'07',n:'Carneiro',e:'🐏'}, {g:'08',n:'Camelo',e:'🐫'}, {g:'09',n:'Cobra',e:'🐍'},
+    {g:'10',n:'Coelho',e:'🐇'}, {g:'11',n:'Cavalo',e:'🐎'}, {g:'12',n:'Elefante',e:'🐘'},
+    {g:'13',n:'Galo',e:'🐓'}, {g:'14',n:'Gato',e:'🐈'}, {g:'15',n:'Jacaré',e:'🐊'},
+    {g:'16',n:'Leão',e:'🦁'}, {g:'17',n:'Macaco',e:'🐒'}, {g:'18',n:'Porco',e:'🐖'},
+    {g:'19',n:'Pavão',e:'🦚'}, {g:'20',n:'Peru',e:'🦃'}, {g:'21',n:'Touro',e:'🐂'},
+    {g:'22',n:'Tigre',e:'🐅'}, {g:'23',n:'Urso',e:'🐻'}, {g:'24',n:'Veado',e:'🦌'}, {g:'25',n:'Vaca',e:'🐄'}
+  ];
+
+  function formatarResultado(bicho) {
+    return bicho.e + ' ' + bicho.n + ' — Grupo ' + bicho.g;
+  }
+
+  function mostrarPalpite(selectId, resultadoId) {
+    var select = document.getElementById(selectId);
+    var indice = parseInt(select.value, 10) % bichos.length;
+    document.getElementById(resultadoId).textContent = formatarResultado(bichos[indice]);
+  }
+
+  (function palpiteDoDia() {
+    var hoje = new Date();
+    var semente = (hoje.getDate() + hoje.getMonth() + 1) % bichos.length;
+    document.getElementById('palpiteDia').textContent = formatarResultado(bichos[semente]);
+  })();
+</script>
 
 <section class="depoimentos">
   <div class="section-head">
